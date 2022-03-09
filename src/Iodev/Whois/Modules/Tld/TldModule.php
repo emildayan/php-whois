@@ -203,6 +203,9 @@ class TldModule extends Module
         } catch (ConnectionException $e) {
             $lastError = $lastError ?: $e;
         }
+        catch (WhoisException $e) {
+            $lastError = $lastError ?: $e;
+        }
         if (!$outInfo && $lastError && $host == $server->getHost() && $strict) {
             throw $lastError;
         }
